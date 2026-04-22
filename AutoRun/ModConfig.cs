@@ -4,5 +4,5 @@ namespace AutoRun;
 
 public class ModConfig
 {
-    public KeybindList ToggleKey { get; set; } = KeybindList.Parse("LeftControl");
+    public KeybindList ToggleKey { get; set; } = KeybindList.Parse("MouseX1");
 }

@@ -31,7 +31,7 @@ namespace AutoRun
                 return;
 
             IsAutoRunning = !IsAutoRunning;
-            string message = IsAutoRunning ? "[AutoRun]: activated" : "[AutoRun]: deactivated";
+            string message = IsAutoRunning ? "activated" : "deactivated";
             Monitor.Log(message, LogLevel.Debug);
         }
 
@@ -41,6 +41,20 @@ namespace AutoRun
                 return;
  
             Helper.Input.Press(SButton.Q);
+            
+            Rectangle box = Game1.player.GetBoundingBox();
+            Rectangle shifted = new Rectangle(box.X - 4, box.Y, box.Width, box.Height);
+            bool isBlocked = Game1.currentLocation.isCollidingPosition(
+                shifted,
+                Game1.viewport,
+                Game1.player
+            );
+            Monitor.Log($"isCollidingPosition: {isBlocked}", LogLevel.Debug);
+            
+            if (!isBlocked)
+                return;
+            
+            IsAutoRunning = false;
         }
     }
 }
