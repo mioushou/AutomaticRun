@@ -1,9 +1,9 @@
 ﻿{
   "Name": "AutoRun",
-  "Author": "Mush",
+  "Author": "Mioushou",
   "Version": "1.0.0",
   "Description": "An Auto Run Mod",
-  "UniqueID": "Mush.AutoRun",
+  "UniqueID": "Mioushou.AutoRun",
   "EntryDll": "AutoRun.dll",
   "MinimumApiVersion": "4.0.0",
   "UpdateKeys": []

@@ -16,6 +16,7 @@ namespace AutoRun
         {
             Config = helper.ReadConfig<ModConfig>();
             helper.Events.Input.ButtonPressed += OnToggle;
+            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         }
 
 
@@ -30,6 +31,27 @@ namespace AutoRun
                 return;
 
             Monitor.Log("AutoRun key pressed !", LogLevel.Debug);
+        }
+
+        private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e)
+        {
+            if (!Context.IsWorldReady)
+                return;
+            
+            // For testing, to avoid log on every tick
+            if(!e.IsMultipleOf(30))
+                return;
+
+            var direction = Game1.player.facingDirection.Value switch
+            {
+                0 => "up",
+                1 => "right",
+                2 => "down",
+                3 => "left",
+                _ => "unknown"
+            };
+            
+            Monitor.Log($"Player is facing {direction}", LogLevel.Debug);
         }
     }
 }
