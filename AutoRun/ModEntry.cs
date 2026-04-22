@@ -11,6 +11,7 @@ namespace AutoRun
     internal sealed class ModEntry : Mod
     {
         private ModConfig Config = null!;
+        private bool IsAutoRunning = false;
         
         public override void Entry(IModHelper helper)
         {
@@ -18,8 +19,7 @@ namespace AutoRun
             helper.Events.Input.ButtonPressed += OnToggle;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         }
-
-
+        
         
         private void OnToggle(object? sender, ButtonPressedEventArgs e)
         {
@@ -30,28 +30,17 @@ namespace AutoRun
             if (!Config.ToggleKey.JustPressed())
                 return;
 
-            Monitor.Log("AutoRun key pressed !", LogLevel.Debug);
+            IsAutoRunning = !IsAutoRunning;
+            string message = IsAutoRunning ? "[AutoRun]: activated" : "[AutoRun]: deactivated";
+            Monitor.Log(message, LogLevel.Debug);
         }
 
         private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e)
         {
-            if (!Context.IsWorldReady)
+            if (!Context.IsWorldReady || !IsAutoRunning)
                 return;
-            
-            // For testing, to avoid log on every tick
-            if(!e.IsMultipleOf(30))
-                return;
-
-            var direction = Game1.player.facingDirection.Value switch
-            {
-                0 => "up",
-                1 => "right",
-                2 => "down",
-                3 => "left",
-                _ => "unknown"
-            };
-            
-            Monitor.Log($"Player is facing {direction}", LogLevel.Debug);
+ 
+            Helper.Input.Press(SButton.Q);
         }
     }
 }
