@@ -1,6 +1,6 @@
 ﻿using StardewModdingAPI.Utilities;
 
-namespace AutoRun;
+namespace AutomaticRun;
 
 public class ModConfig
 {

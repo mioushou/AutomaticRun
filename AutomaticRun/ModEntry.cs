@@ -5,7 +5,7 @@ using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 
-namespace AutoRun
+namespace AutomaticRun
 {
     /// <summary>The mod entry point.</summary>
     internal sealed class ModEntry : Mod
@@ -17,6 +17,28 @@ namespace AutoRun
         {
             Config = helper.ReadConfig<ModConfig>();
             helper.Events.GameLoop.UpdateTicking += OnUpdateTicking;
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+        }
+        
+        private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
+        {
+            var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
+            if (configMenu is null)
+                return;
+
+            configMenu.Register(
+                mod: ModManifest,
+                reset: () => Config = new ModConfig(),
+                save: () => Helper.WriteConfig(Config)
+            );
+
+            configMenu.AddKeybindList(
+                mod: ModManifest,
+                name: () => "AutomaticRun",
+                tooltip: () => "La touche pour activer/désactiver la course automatique",
+                getValue: () => Config.ToggleKey,
+                setValue: value => Config.ToggleKey = value
+            );
         }
 
         private void OnUpdateTicking(object? sender, UpdateTickingEventArgs e)
