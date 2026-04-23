@@ -50,6 +50,7 @@ namespace AutomaticRun
             if (Config.ToggleKey.JustPressed())
             {
                 IsAutoRunning = !IsAutoRunning;
+                Game1.addHUDMessage(new HUDMessage(IsAutoRunning ? "AutomaticRun ON" : "AutomaticRun OFF", HUDMessage.newQuest_type));
             }
 
             if (!IsAutoRunning)
