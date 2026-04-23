@@ -34,8 +34,8 @@ namespace AutomaticRun
 
             configMenu.AddKeybindList(
                 mod: ModManifest,
-                name: () => "AutomaticRun",
-                tooltip: () => "La touche pour activer/désactiver la course automatique",
+                name: () => Helper.Translation.Get("config.toggleKey.name"),
+                tooltip: () => Helper.Translation.Get("config.toggleKey.tooltip"),
                 getValue: () => Config.ToggleKey,
                 setValue: value => Config.ToggleKey = value
             );
@@ -50,7 +50,7 @@ namespace AutomaticRun
             if (Config.ToggleKey.JustPressed())
             {
                 IsAutoRunning = !IsAutoRunning;
-                Game1.addHUDMessage(new HUDMessage(IsAutoRunning ? "AutomaticRun ON" : "AutomaticRun OFF", HUDMessage.newQuest_type));
+                Game1.addHUDMessage(new HUDMessage(Helper.Translation.Get(IsAutoRunning ? "hud.autorun.on" : "hud.autorun.off"), HUDMessage.newQuest_type));
             }
 
             if (!IsAutoRunning)

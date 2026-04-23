@@ -1,0 +1,6 @@
+﻿{
+  "config.toggleKey.name": "AutomaticRun Key",
+  "config.toggleKey.tooltip": "The key to toggle automatic running on/off",
+  "hud.autorun.on": "AutomaticRun ON",
+  "hud.autorun.off": "AutomaticRun OFF"
+}
