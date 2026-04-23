@@ -57,6 +57,17 @@ namespace AutomaticRun
                 return;
             
             bool isChangingDirection =
+                // Left joystick
+                Helper.Input.IsDown(SButton.LeftThumbstickLeft) ||
+                Helper.Input.IsDown(SButton.LeftThumbstickRight) ||
+                Helper.Input.IsDown(SButton.LeftThumbstickUp) ||
+                Helper.Input.IsDown(SButton.LeftThumbstickDown) ||
+                // DPad
+                Helper.Input.IsDown(SButton.DPadLeft) ||
+                Helper.Input.IsDown(SButton.DPadRight) ||
+                Helper.Input.IsDown(SButton.DPadUp) ||
+                Helper.Input.IsDown(SButton.DPadDown) ||
+                // Keyboard
                 Game1.options.moveUpButton.Any(button => Helper.Input.IsDown((SButton)button.key)) ||
                 Game1.options.moveDownButton.Any(button => Helper.Input.IsDown((SButton)button.key)) ||
                 Game1.options.moveLeftButton.Any(button => Helper.Input.IsDown((SButton)button.key)) ||
