@@ -1,6 +1,8 @@
 ﻿{
   "config.toggleKey.name": "Touche AutomaticRun",
   "config.toggleKey.tooltip": "La touche pour activer/désactiver la course automatique",
+  "config.stopOnCollision.name": "Arrêt sur collision",
+  "config.stopOnCollision.tooltip": "Arrête automatiquement le personnage quand il touche un mur ou un obstacle",
   "hud.autorun.on": "AutomaticRun activé",
   "hud.autorun.off": "AutomaticRun désactivé"
 }

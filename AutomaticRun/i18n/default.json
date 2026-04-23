@@ -1,6 +1,8 @@
 ﻿{
   "config.toggleKey.name": "AutomaticRun Key",
   "config.toggleKey.tooltip": "The key to toggle automatic running on/off",
+  "config.stopOnCollision.name": "Stop on Collision",
+  "config.stopOnCollision.tooltip": "Automatically stops the character when hitting a wall or obstacle",
   "hud.autorun.on": "AutomaticRun ON",
   "hud.autorun.off": "AutomaticRun OFF"
 }

@@ -4,5 +4,7 @@ namespace AutomaticRun;
 
 public class ModConfig
 {
-    public KeybindList ToggleKey { get; set; } = KeybindList.Parse("LeftControl");
+    public KeybindList ToggleKey { get; set; } = KeybindList.Parse("LeftControl, LeftStick");
+    public bool StopOnCollision { get; set; } = false;
+    
 }
