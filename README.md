@@ -21,7 +21,7 @@ A Stardew Valley mod that lets you toggle auto-run so your farmer keeps moving i
 
 - Download and install the latest version of [SMAPI](https://smapi.io/)
 - Download the latest release of AutomaticRun from:
-    - [Nexus] (https://www.nexusmods.com/stardewvalley/mods/45380)
+    - [Nexus](https://www.nexusmods.com/stardewvalley/mods/45380)
     - The [releases page](https://github.com/Mioushou/AutomaticRun/releases)
 - Extract the contents of the downloaded archive into your `Stardew Valley/Mods` folder
 - Install [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098) if you want in-game configuration options
