@@ -14,6 +14,7 @@ namespace AutomaticRun
 		public override void Entry(IModHelper helper)
 		{
 			Config = helper.ReadConfig<ModConfig>();
+			helper.WriteConfig(Config);
 			helper.Events.GameLoop.UpdateTicking += OnUpdateTicking;
 			helper.Events.GameLoop.GameLaunched += OnGameLaunched;
 		}
