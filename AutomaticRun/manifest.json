@@ -1,10 +1,10 @@
 ﻿{
   "Name": "AutomaticRun",
   "Author": "Mioushou",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Description": "An auto run mod that makes your farmer keep moving with a press of a button",
   "UniqueID": "Mioushou.AutomaticRun",
   "EntryDll": "AutomaticRun.dll",
   "MinimumApiVersion": "4.0.0",
-  "UpdateKeys": []
+  "UpdateKeys": ["Nexus:45380"]
 }
