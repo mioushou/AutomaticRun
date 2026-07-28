@@ -34,6 +34,7 @@ A Stardew Valley mod that lets you toggle auto-run so your farmer keeps moving i
 - Works while riding as well
 - If collision detection is enabled, auto-run will stop when you hit a wall or obstacle
 - You can customize the toggle key and collision behavior in the mod config menu (if you have Generic Mod Config Menu installed) or by editing the `config.json` file directly in `.../Mods/AutomaticRun/config.json`
+- AutomaticRun works independently of Stardew Valley's auto run option. If that option is disabled, your farmer will run while the mod is active and return to walking when the mod is disabled.
 
 ### config.json example
 

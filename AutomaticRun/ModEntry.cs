@@ -11,11 +11,13 @@ namespace AutomaticRun
 		private ModConfig Config = null!;
 		private bool IsAutoRunning;
 		private const int OFFSET = 4;
+		private bool RestoreAutoRunOption;
 		public override void Entry(IModHelper helper)
 		{
 			Config = helper.ReadConfig<ModConfig>();
 			helper.WriteConfig(Config);
 			helper.Events.GameLoop.UpdateTicking += OnUpdateTicking;
+			helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
 			helper.Events.GameLoop.GameLaunched += OnGameLaunched;
 		}
 
@@ -85,6 +87,12 @@ namespace AutomaticRun
 
 			if (!IsAutoRunning)
 				return;
+			
+			if (!Game1.options.autoRun && !Game1.player.canOnlyWalk)
+			{
+				Game1.options.autoRun = true;
+				RestoreAutoRunOption = true;
+			}
 
 			bool isChangingDirection =
 				// Left joystick
@@ -125,6 +133,15 @@ namespace AutomaticRun
 				SButton key = (SButton)buttons[0].key;
 				Helper.Input.Press(key);
 			}
+		}
+		
+		private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e)
+		{
+			if (!RestoreAutoRunOption)
+				return;
+
+			Game1.options.autoRun = false;
+			RestoreAutoRunOption = false;
 		}
 	}
 }
